@@ -1,0 +1,9 @@
+{
+  "requestContext": {
+    "authorizer": {
+      "claims": {
+        "sub": "testuser@unit.no"
+      }
+    }
+  }
+}
