@@ -12,12 +12,13 @@ phases:
   pre_build:
     commands:
 
+      - export S3_BUCKET="$(aws cloudformation describe-stacks --stack-name NvaPipelineForLambda --query 'Stacks[0].Outputs[?OutputKey==`ArtifactsBucket`].OutputValue' --output text)"
+
       # Discover and run unit tests in the 'tests' directory. For more information, see <https://docs.python.org/3/library/unittest.html#test-discovery>
       - python -m unittest discover tests
   
   build:
     commands:
-
       # Use AWS SAM to package the application by using AWS CloudFormation
       - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
 
