@@ -8,7 +8,12 @@ class TestHandlerCase(unittest.TestCase):
     def test_response(self):
         uuid_regex = "[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}"
         print("testing response.")
-        result = index.handler(None, None)
+
+        event = {
+            'url': 'https://unit.no'
+        }
+
+        result = index.handler(event, None)
         json_body = json.loads(result['body'])
         print(result)
         self.assertEqual(result['statusCode'], 200)

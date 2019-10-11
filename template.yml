@@ -6,7 +6,7 @@ Transform:
 Parameters:
   ProjectId:
     Type: String
-    Description: CodeStar projectId used to associate new resources to team members
+    Description: The projectId used to associate new resources to team members
   CodeDeployRole:
     Type: String
     Description: IAM role to allow AWS CodeDeploy to manage deployment of AWS Lambda functions
@@ -24,7 +24,7 @@ Globals:
       Role: !Ref CodeDeployRole
 
 Resources:
-  HelloWorld:
+  FetchHandle:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
@@ -34,15 +34,10 @@ Resources:
         - LambdaExecutionRole
         - Arn
       Events:
-        GetEvent:
-          Type: Api
-          Properties:
-            Path: /
-            Method: get
         PostEvent:
           Type: Api
           Properties:
-            Path: /
+            Path: /{proxy+}
             Method: post
   LambdaExecutionRole:
     Description: Creating service role in IAM for AWS Lambda
