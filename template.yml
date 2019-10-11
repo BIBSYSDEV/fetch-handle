@@ -29,6 +29,7 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: python3.7
+      CodeUri: ./code
       Role:
         Fn::GetAtt:
         - LambdaExecutionRole
