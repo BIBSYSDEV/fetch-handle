@@ -1,6 +1,6 @@
 import json
 import unittest
-from src import index
+import index
 
 
 class TestHandlerCase(unittest.TestCase):
