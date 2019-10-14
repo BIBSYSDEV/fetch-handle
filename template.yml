@@ -29,7 +29,7 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: python3.7
-      CodeUri: ./index.py
+      CodeUri: ./
       Role:
         Fn::GetAtt:
         - LambdaExecutionRole
@@ -39,7 +39,7 @@ Resources:
           Type: Api
           Properties:
             Path: /{proxy+}
-            Method: post
+            Method: POST
   LambdaExecutionRole:
     Description: Creating service role in IAM for AWS Lambda
     Type: AWS::IAM::Role

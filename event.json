@@ -1,7 +1,7 @@
 {
   "resource": "/{proxy+}",
   "path": "/",
-  "httpMethod": "GET",
+  "httpMethod": "POST",
   "headers": {
     "Accept": "application/json"
   },
