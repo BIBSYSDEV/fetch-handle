@@ -5,7 +5,7 @@ import uuid
 
 def handler(event, context):
 
-    url = event.get('url')
+    url = json.loads(event['body']).get('url')
 
     data = {
         'uuid': uuid.uuid4().__str__(),
