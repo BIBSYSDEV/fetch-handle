@@ -1,5 +1,6 @@
 import json
 import unittest
+
 from src import index
 
 
@@ -19,14 +20,12 @@ class TestHandlerCase(unittest.TestCase):
         self.assertEqual(result['statusCode'], 200)
         self.assertEqual(result['headers']['Content-Type'], 'application/json')
         self.assertRegex(json_body['uuid'], uuid_regex, 'The returned value did not match the UUID pattern')
-        self.assertEqual(json_body['inputUrl'], 'https://unit.no')
+        self.assertEqual('https://unit.no', json_body['inputUrl'])
 
     def test_error_response(self):
-        uuid_regex = "[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}"
-        print("testing response.")
 
         event = {
-            'body': '{"uri": "https://unit.no"}'
+            'body': '{"url": "unit.no"}'
         }
 
         result = index.handler(event, None)
