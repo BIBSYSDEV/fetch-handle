@@ -6,7 +6,10 @@ import validators
 
 
 def handler(event, context):
-    url = json.loads(event['body']).get('url')
+    try:
+        url = json.loads(event['body']).get('url')
+    except ValueError:
+        raise ValueError('No URL given')
     if not validators.url(url):
         raise ValueError('Value passed as URL is not a URL')
 

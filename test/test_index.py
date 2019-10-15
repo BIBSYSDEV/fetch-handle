@@ -28,13 +28,15 @@ class TestHandlerCase(unittest.TestCase):
             'body': '{"url": "unit.no"}'
         }
 
-        result = index.handler(event, None)
-        json_body = json.loads(result['body'])
-        print(result)
-        self.assertEqual(result['statusCode'], 200)
-        self.assertEqual(result['headers']['Content-Type'], 'application/json')
-        self.assertNotEqual(json_body['inputUrl'], 'https://unit.no')
-        self.assertIsNone(json_body['inputUrl'])
+        self.assertRaises(ValueError, index.handler, event, None)
+
+    def test_missingURL_response(self):
+
+        event = {
+            'body': '{"uri": "unit.no"}'
+        }
+
+        self.assertRaises(ValueError, index.handler, event, None)
 
 
 if __name__ == '__main__':
