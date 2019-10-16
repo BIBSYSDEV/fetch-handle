@@ -25,7 +25,7 @@ phases:
     commands:
       # Use AWS SAM to build and package the application by using AWS CloudFormation
       - sam build --debug
-      - aws cloudformation package --debug --template-file .aws-sam/build/template.yaml --s3-bucket $S3_BUCKET --output-template packaged.yaml
+      - sam package --debug --template-file .aws-sam/build/template.yaml --s3-bucket $S3_BUCKET --output-template packaged.yaml
 
       # Do not remove this statement. This command is required for AWS CodeStar projects.
       # Update the AWS Partition, AWS Region, account ID and project ID in the project ARN on template-configuration.json file so AWS CloudFormation can tag project resources.
