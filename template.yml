@@ -1,7 +1,19 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform:
 - AWS::Serverless-2016-10-31
-- AWS::CodeStar
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: fetch-handle
+    Description: pretends to fetch a handle
+    Author: Unit
+    SpdxLicenseId: MIT
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    Labels: ['test']
+    HomePageUrl: https://github.com/BIBSYSDEV/fetch-handle
+    SemanticVersion: 0.0.1
+    SourceCodeUrl: https://github.com/BIBSYSDEV/fetch-handle
 
 Parameters:
   ProjectId:
