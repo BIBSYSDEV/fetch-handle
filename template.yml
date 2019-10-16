@@ -10,7 +10,6 @@ Metadata:
     SpdxLicenseId: MIT
     LicenseUrl: LICENSE
     ReadmeUrl: README.md
-    Labels: ['test']
     HomePageUrl: https://github.com/BIBSYSDEV/fetch-handle
     SemanticVersion: 0.0.1
     SourceCodeUrl: https://github.com/BIBSYSDEV/fetch-handle
