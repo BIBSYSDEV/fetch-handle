@@ -7,19 +7,25 @@ phases:
     commands:
 
       # Upgrade AWS CLI to the latest version
-      - pip install --upgrade awscli
+      - pip3 install --upgrade awscli
+
+      # Install aws-sam-cli
+      - pip3 install aws-sam-cli
+
+      # Install project requirements
+      - pip3 install -r src/requirements.txt
 
   pre_build:
     commands:
 
-      # Discover and run unit tests in the 'tests' directory. For more information, see <https://docs.python.org/3/library/unittest.html#test-discovery>
-      - python -m unittest discover tests
+      # Discover and run unit tests in the 'test' directory. For more information, see <https://docs.python.org/3/library/unittest.html#test-discovery>
+      - python3 -m unittest discover test
   
   build:
     commands:
-
-      # Use AWS SAM to package the application by using AWS CloudFormation
-      - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
+      # Use AWS SAM to build and package the application by using AWS CloudFormation
+      - sam build --debug
+      - sam package --debug --template-file .aws-sam/build/template.yaml --s3-bucket $S3_BUCKET --output-template packaged.yaml
 
       # Do not remove this statement. This command is required for AWS CodeStar projects.
       # Update the AWS Partition, AWS Region, account ID and project ID in the project ARN on template-configuration.json file so AWS CloudFormation can tag project resources.
@@ -28,5 +34,5 @@ phases:
 artifacts:
   type: zip
   files:
-    - template-export.yml
+    - packaged.yaml
     - template-configuration.json

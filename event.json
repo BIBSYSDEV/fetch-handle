@@ -1,8 +1,9 @@
 {
-  "resource":"/{proxy+}",
+  "resource": "/{proxy+}",
   "path": "/",
-  "httpMethod": "GET",
+  "httpMethod": "POST",
   "headers": {
     "Accept": "application/json"
-  }
+  },
+  "body": "{\"url\": \"https://unit.no\"}"
 }
